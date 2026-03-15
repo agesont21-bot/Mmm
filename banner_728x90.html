@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MARSFaucet — 728x90 Banner</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:728px;height:90px;overflow:hidden;background:transparent}
+/* ═══════════════════════════════════════════════════
+   BANNER 1 — 728×90 Leaderboard
+═══════════════════════════════════════════════════ */
+.b1{
+  width:728px;height:90px;
+  background:#04101e;
+  border:1px solid #0c1f30;
+  border-radius:10px;
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+  display:flex;align-items:center;
+}
+
+/* rain drops background */
+.b1-rain{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.drop{
+  position:absolute;top:-20px;
+  width:1px;background:linear-gradient(to bottom,transparent,rgba(0,212,170,.5),transparent);
+  animation:fall linear infinite;
+}
+@keyframes fall{to{transform:translateY(110px)}}
+
+/* scanning line */
+.b1::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(0,212,170,.06) 50%,transparent 100%);
+  width:200%;
+  animation:scan1 3s linear infinite;
+}
+@keyframes scan1{from{transform:translateX(-50%)}to{transform:translateX(0%)}}
+
+/* left coin section */
+.b1-coin{
+  width:90px;height:90px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  border-right:1px solid #0c1f30;
+  position:relative;overflow:hidden;
+  background:radial-gradient(circle at 50% 50%,#001a12,#04101e);
+}
+.coin-ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(0,212,170,.15);
+  animation:expand linear infinite;
+}
+.coin-ring:nth-child(1){width:20px;height:20px;animation-duration:2s;animation-delay:0s}
+.coin-ring:nth-child(2){width:20px;height:20px;animation-duration:2s;animation-delay:.65s}
+.coin-ring:nth-child(3){width:20px;height:20px;animation-duration:2s;animation-delay:1.3s}
+@keyframes expand{
+  0%{width:20px;height:20px;opacity:.8}
+  100%{width:80px;height:80px;opacity:0}
+}
+.coin-icon{font-size:30px;position:relative;z-index:2;animation:coinbob 2s ease-in-out infinite}
+@keyframes coinbob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-5px) rotate(8deg)}}
+
+/* middle text — slides in sequence */
+.b1-mid{flex:1;padding:0 22px;position:relative;overflow:hidden;height:90px}
+.b1-slide{
+  position:absolute;inset:0;
+  display:flex;align-items:center;
+  padding:0 0;
+  opacity:0;
+  transform:translateY(30px);
+  animation:slide1 9s linear infinite;
+}
+.b1-slide:nth-child(2){animation-delay:3s}
+.b1-slide:nth-child(3){animation-delay:6s}
+@keyframes slide1{
+  0%{opacity:0;transform:translateY(30px)}
+  5%{opacity:1;transform:translateY(0)}
+  28%{opacity:1;transform:translateY(0)}
+  33%{opacity:0;transform:translateY(-30px)}
+  100%{opacity:0;transform:translateY(30px)}
+}
+.b1-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#e8f4f0;line-height:1.1}
+.b1-title .hi{color:#00d4aa}
+.b1-sub{font-size:11px;color:#2e6655;margin-top:3px;letter-spacing:.4px}
+
+/* stats */
+.b1-stats{
+  display:flex;gap:0;flex-shrink:0;
+  border-left:1px solid #0c1f30;
+  border-right:1px solid #0c1f30;
+}
+.b1-stat{
+  padding:0 18px;text-align:center;
+  border-right:1px solid #0c1f30;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.b1-stat:last-child{border-right:none}
+.b1-stat .sv{
+  font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#00d4aa;line-height:1;
+  animation:countup 4s ease-in-out infinite alternate;
+}
+@keyframes countup{0%{opacity:.6}100%{opacity:1;text-shadow:0 0 12px rgba(0,212,170,.5)}}
+.b1-stat .sl{font-size:9px;color:#1e4a38;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+
+/* button */
+.b1-right{width:150px;flex-shrink:0;padding:0 16px;display:flex;align-items:center;justify-content:center}
+.b1-btn{
+  width:118px;height:44px;
+  background:linear-gradient(135deg,#00d4aa,#00b894);
+  border:none;border-radius:8px;
+  color:#031a0f;font-family:'Syne',sans-serif;font-size:13px;font-weight:800;
+  cursor:pointer;letter-spacing:.4px;
+  position:relative;overflow:hidden;
+  box-shadow:0 0 20px rgba(0,212,170,.4);
+  transition:all .2s;
+  animation:btnpulse 2s ease-in-out infinite;
+}
+@keyframes btnpulse{0%,100%{box-shadow:0 0 15px rgba(0,212,170,.3)}50%{box-shadow:0 0 30px rgba(0,212,170,.6),0 0 50px rgba(0,212,170,.2)}}
+.b1-btn::before{
+  content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  animation:btnshine 2s ease-in-out infinite;
+}
+@keyframes btnshine{0%{left:-100%}100%{left:150%}}
+.b1-btn:hover{transform:scale(1.06)}
+
+
+
+</style>
+</head>
+<body>
+<div>
+<p class="label">728 × 90 — Leaderboard</p>
+<div class="b1">
+  <!-- rain drops (generated by JS) -->
+  <div class="b1-rain" id="rain1"></div>
+
+  <div class="b1-coin">
+    <div class="coin-ring"></div>
+    <div class="coin-ring"></div>
+    <div class="coin-ring"></div>
+    <div class="coin-icon">🌧️</div>
+  </div>
+
+  <div class="b1-mid">
+    <div class="b1-slide">
+      <div>
+        <div class="b1-title">Earn Free <span class="hi">USDT</span> Every Minute</div>
+        <div class="b1-sub">INSTANT PAYOUT · NO DEPOSIT · POWERED BY FAUCETPAY</div>
+      </div>
+    </div>
+    <div class="b1-slide">
+      <div>
+        <div class="b1-title">👥 <span class="hi">50% Referral</span> Commission</div>
+        <div class="b1-sub">SHARE YOUR LINK · EARN FOREVER · PASSIVE INCOME</div>
+      </div>
+    </div>
+    <div class="b1-slide">
+      <div>
+        <div class="b1-title">⚡ <span class="hi">Instant</span> Withdrawal</div>
+        <div class="b1-sub">NO MINIMUM · NO WAITING · DIRECT TO FAUCETPAY WALLET</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="b1-stats">
+    <div class="b1-stat"><div class="sv">0.0001</div><div class="sl">Per Claim</div></div>
+    <div class="b1-stat"><div class="sv">60s</div><div class="sl">Wait Time</div></div>
+    <div class="b1-stat"><div class="sv">50%</div><div class="sl">Referral</div></div>
+  </div>
+
+  <div class="b1-right">
+    <button class="b1-btn">CLAIM NOW →</button>
+  </div>
+</div>
+<p class="sizelabel">728 × 90 px</p>
+</div>
+<script>
+// ── Rain drops for 728×90 ──────────────────────────────────
+(function(){
+  var rain = document.getElementById('rain1');
+  for(var i=0;i<18;i++){
+    var d = document.createElement('div');
+    d.className = 'drop';
+    d.style.left = (Math.random()*100)+'%';
+    d.style.height = (20+Math.random()*40)+'px';
+    d.style.opacity = (0.2+Math.random()*0.5);
+    d.style.animationDuration = (0.4+Math.random()*0.8)+'s';
+    d.style.animationDelay = (-Math.random()*1.5)+'s';
+    rain.appendChild(d);
+  }
+})();
+</script>
+
+<script>
+document.body.addEventListener('click', function(){
+  window.open('https://marsfaucet.zya.me', '_blank');
+});
+document.body.style.cursor = 'pointer';
+</script>
+</body>
+</html>
